@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
     try:
         n = int(sys.argv[1])
-        result = fibonacci(n) + 1
+        result = fibonacci(n)
         print(result)
     except ValueError:
         print("Invalid input. Please provide a positive integer value for n.")
