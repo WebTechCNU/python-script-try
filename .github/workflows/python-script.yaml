@@ -1,0 +1,32 @@
+name: Python Script Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+      
+    - name: Run Python script
+      run: python fib.py 10
+      # working-directory: ./path/to/your/script
+      
+    - name: Verify output
+      run: |
+        expected_output="55"
+        actual_output=$(python fib.py 10)
+        if [ "$expected_output" != "$actual_output" ]; then
+          echo "Output doesn't match the expected output"
+          exit 1
+        fi
